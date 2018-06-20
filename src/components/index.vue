@@ -17,12 +17,7 @@
 
 <script>
 export default {
-  name: 'index',
-  data () {
-    return {
-      isSignIn: 0
-    }
-  }
+  name: 'index'
 }
 </script>
 
