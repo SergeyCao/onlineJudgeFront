@@ -1,23 +1,35 @@
 <template>
-  <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
-    <el-menu-item index="1" class="logo">OnlineJudge</el-menu-item>
-    <el-menu-item index="2">
+  <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="changeRouter">
+    <el-menu-item index="/" class="logo">OnlineJudge</el-menu-item>
+    <el-menu-item index="/problem">
       <i class="el-icon-tickets"></i>
       Problem
     </el-menu-item>
-    <el-menu-item index="3">Contests</el-menu-item>
-    <el-menu-item index="4">Status</el-menu-item>
-    <el-menu-item index="5">Rank</el-menu-item>
-    <el-menu-item index="6">Blog</el-menu-item>
+    <el-menu-item index="/contests">Contests</el-menu-item>
+    <el-menu-item index="/status">Status</el-menu-item>
+    <el-menu-item index="/rank">Rank</el-menu-item>
+    <el-menu-item index="/blog">Blog</el-menu-item>
+    <el-menu-item index="/about">About</el-menu-item>
     <div v-if="!isSignIn">
-      <el-button type="primary" style="float: right;margin-top: 8px">Sign in</el-button>
+      <el-button type="primary" style="float: right;margin-top: 8px" :onclick="signIn">Sign in</el-button>
+    </div>
+    <div v-else>
+      <!--profile  -->
     </div>
   </el-menu>
 </template>
 
 <script>
 export default {
-  name: 'index'
+  name: 'index',
+  methods: {
+    signIn () {
+      return 0
+    },
+    changeRouter (key) {
+      this.$router.push(key)
+    }
+  }
 }
 </script>
 
