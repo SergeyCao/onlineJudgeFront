@@ -1,15 +1,71 @@
 <template>
-  <div>
-    index
-  </div>
+    <el-table
+      :data="announcements"
+      style="width: 100%"
+      :row-class-name="tableRowClassName">
+      <el-table-column
+        prop="title"
+        label="title"
+        width="180">
+      </el-table-column>
+      <el-table-column
+        prop="date"
+        label="date"
+        width="180">
+      </el-table-column>
+      <el-table-column
+        prop="writer"
+        label="writer">
+      </el-table-column>
+    </el-table>
 </template>
 
 <script>
+import api from './api'
 export default {
-  name: 'index'
+  name: 'index',
+  data () {
+    return {
+      announcements: [
+        {
+          'title': '111',
+          'date': '2018-5-21',
+          'writer': 'mas-'
+        }
+      ]
+    }
+  },
+  mounted () {
+    // this.init()
+  },
+  methods: {
+    init () {
+      this.getAnnouncements()
+    },
+    getAnnouncements () {
+      api.getAnnouncementList().then(res => {
+        this.announcements = res.data.data.results
+        this.size = res.data.data.size
+      })
+    },
+    tableRowClassName ({row, rowIndex}) {
+      if (rowIndex === 1) {
+        return 'warning-row'
+      } else if (rowIndex === 3) {
+        return 'success-row'
+      }
+      return ''
+    }
+  }
 }
 </script>
 
 <style scoped>
+  .el-table .warning-row {
+    background: oldlace;
+  }
 
+  .el-table .success-row {
+    background: #f0f9eb;
+  }
 </style>
