@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import index from '@/components/index'
-import problem from '@/components/problem/problem'
+import home from '@/components/Home'
+import ProblemList from '@/components/problem/ProblemList'
 Vue.use(Router)
 
 export default new Router({
@@ -9,13 +9,13 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'index',
-      component: index
+      name: 'home',
+      component: home
     },
     {
-      path: '/problem',
-      name: 'problem',
-      component: problem
+      path: '/problems',
+      name: 'ProblemList',
+      component: ProblemList
     }
   ]
 })

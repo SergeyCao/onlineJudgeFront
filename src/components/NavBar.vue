@@ -2,7 +2,7 @@
   <div id="Navbar">
     <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="changeRouter">
       <el-menu-item index="/" class="logo">OnlineJudge</el-menu-item>
-      <el-menu-item index="/problem">
+      <el-menu-item index="/problems">
         <i class="el-icon-tickets"></i>
         Problem
       </el-menu-item>
