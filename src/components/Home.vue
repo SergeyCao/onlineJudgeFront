@@ -14,8 +14,8 @@
         width="180">
       </el-table-column>
       <el-table-column
-        prop="writer"
-        label="writer">
+        prop="author"
+        label="author">
       </el-table-column>
     </el-table>
 </template>
@@ -30,7 +30,7 @@ export default {
         {
           'title': '111',
           'date': '2018-5-21',
-          'writer': 'mas-'
+          'author': 'mas-'
         }
       ]
     }
