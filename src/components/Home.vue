@@ -27,16 +27,16 @@ export default {
   data () {
     return {
       announcements: [
-        {
-          'title': '111',
-          'date': '2018-5-21',
-          'author': 'mas-'
-        }
+        // {
+        //   'title': '111',
+        //   'date': '2018-5-21',
+        //   'author': 'mas-'
+        // }
       ]
     }
   },
   mounted () {
-    // this.init()
+    this.init()
   },
   methods: {
     init () {
@@ -44,7 +44,8 @@ export default {
     },
     getAnnouncements () {
       api.getAnnouncementList().then(res => {
-        this.announcements = res.data.data.results
+        console.log(res)
+        this.announcements = res.data
         this.size = res.data.data.size
       })
     },

@@ -8,7 +8,7 @@ axios.defaults.xsrfCookieName = 'csrftoken'
 
 export default {
   getAnnouncementList () {
-    return ajax('announcement', 'get')
+    return ajax('announcements', 'get')
   },
   getProblemList () {
     return ajax('problem', 'get')
