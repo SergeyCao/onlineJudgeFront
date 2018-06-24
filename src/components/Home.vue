@@ -26,13 +26,7 @@ export default {
   name: 'home',
   data () {
     return {
-      announcements: [
-        // {
-        //   'title': '111',
-        //   'date': '2018-5-21',
-        //   'author': 'mas-'
-        // }
-      ]
+      announcements: []
     }
   },
   mounted () {

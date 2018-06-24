@@ -12,7 +12,7 @@
       <el-menu-item index="/blog">Blog</el-menu-item>
       <el-menu-item index="/about">About</el-menu-item>
       <div v-if="!isSignIn">
-        <el-button type="primary" style="float: right;margin-top: 8px" :onclick="signIn">Sign in</el-button>
+        <el-button type="primary" style="float: right;margin-top: 8px" @click="signIn">Sign in</el-button>
       </div>
       <div v-else>
         <!--profile  -->
@@ -24,9 +24,14 @@
 <script>
 export default {
   name: 'NavBar',
+  data () {
+    return {
+      activeIndex: '1'
+    }
+  },
   methods: {
     signIn () {
-      return 0
+      this.$router.push('/user/signin')
     },
     changeRouter (key) {
       this.$router.push(key)
