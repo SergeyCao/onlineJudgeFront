@@ -3,6 +3,9 @@ import Router from 'vue-router'
 import home from '@/components/Home'
 import ProblemList from '@/components/problem/ProblemList'
 import SignIn from '@/components/user/SignIn'
+import Register from '@/components/user/Register'
+import User from '@/components/user/User'
+
 Vue.use(Router)
 
 export default new Router({
@@ -15,13 +18,24 @@ export default new Router({
     },
     {
       path: '/problems',
-      name: 'ProblemList',
+      name: 'problemList',
       component: ProblemList
     },
     {
-      path: '/user/signin',
-      name: 'SignIn',
-      component: SignIn
+      path: '/user/',
+      component: User,
+      children: [
+        {
+          path: 'signin',
+          name: 'signIn',
+          component: SignIn
+        },
+        {
+          path: 'register',
+          name: 'register',
+          component: Register
+        }
+      ]
     }
   ]
 })
