@@ -33,6 +33,7 @@
 </template>
 
 <script>
+import api from '../api'
 export default {
   name: 'Register',
   data () {
@@ -71,13 +72,13 @@ export default {
       },
       rule: {
         username: [
-          {validator: validUsernamePass, trigger: 'blur',required: true}
+          {validator: validUsernamePass, trigger: 'blur', required: true}
         ],
         password: [
-          {validator: validPasswordPass, trigger: ['blur', 'change'],required: true}
+          {validator: validPasswordPass, trigger: ['blur', 'change'], required: true}
         ],
         checkPassword: [
-          {validator: validCheckPwdPass, trigger: ['blur', 'change'],required: true}
+          {validator: validCheckPwdPass, trigger: ['blur', 'change'], required: true}
         ]
       }
     }
@@ -86,9 +87,19 @@ export default {
     submitForm (formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          alert('submit!')
+          api.register(this.account).then(res => {
+            if (res.data.ok === 1) {
+              alert('注册成功')
+              this.$router.push('/')
+            }
+            else {
+              alert(res.data.msg)
+              this.$refs.account.resetFields()
+            }
+          })
         } else {
           console.log('error submit!!')
+          alert('error submit')
           return false
         }
       })

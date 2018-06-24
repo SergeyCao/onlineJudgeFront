@@ -12,6 +12,11 @@ export default {
   },
   getProblemList () {
     return ajax('problem', 'get')
+  },
+  register (data) {
+    return ajax('register', 'post', {
+      data
+    })
   }
 }
 function ajax (url, method, options) {
@@ -20,6 +25,8 @@ function ajax (url, method, options) {
   } else {
     params = data = {}
   }
+  console.log(data.data)
+  console.log(options)
   return new Promise((resolve, reject) => {
     axios({
       url,
@@ -34,7 +41,7 @@ function ajax (url, method, options) {
     }, res => {
       // API请求异常，一般为Server error 或 network error
       reject(res)
-      Vue.prototype.$error(res.data.data)
+      Vue.prototype.$error(res.data)
     })
   })
 }
