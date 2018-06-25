@@ -91,8 +91,7 @@ export default {
             if (res.data.ok === 1) {
               alert('注册成功')
               this.$router.push('/')
-            }
-            else {
+            } else {
               alert(res.data.msg)
               this.$refs.account.resetFields()
             }

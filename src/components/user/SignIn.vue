@@ -26,6 +26,9 @@
 </template>
 
 <script>
+import api from '../api'
+import {mapGetters} from 'vuex'
+
 export default {
   name: 'SignIn',
   data () {
@@ -46,7 +49,8 @@ export default {
     return {
       account: {
         username: '',
-        password: ''
+        password: '',
+        isRemember: true
       },
       rule: {
         username: [
@@ -59,9 +63,33 @@ export default {
     }
   },
   methods: {
+    submitForm (formName) {
+      this.$refs[formName].validate((valid) => {
+        if (valid) {
+          api.signIn(this.account).then(res => {
+            if (res.data.ok === 1) {
+              alert('登陆成功')
+              this.$store.commit('setProfile', res.data.data)
+              this.$router.push('/')
+              console.log(this.profile)
+            } else {
+              alert(res.data.msg)
+              this.$refs.account.resetFields()
+            }
+          })
+        } else {
+          console.log('error submit!!')
+          alert('error submit')
+          return false
+        }
+      })
+    },
     resetForm (form) {
       this.$refs[form].resetFields()
     }
+  },
+  computed: {
+    ...mapGetters(['profile', 'isSignIn'])
   }
 }
 </script>

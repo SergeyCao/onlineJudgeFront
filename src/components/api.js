@@ -2,19 +2,24 @@ import Vue from 'vue'
 import axios from 'axios'
 
 Vue.prototype.$http = axios
-axios.defaults.baseURL = '/api'
 axios.defaults.xsrfHeaderName = 'X-CSRFToken'
 axios.defaults.xsrfCookieName = 'csrftoken'
-
+var URL_API = '/api/'
+// var URL_USER = '/filter_api/'
 export default {
   getAnnouncementList () {
-    return ajax('announcements', 'get')
+    return ajax(URL_API + 'announcements', 'get')
   },
   getProblemList () {
-    return ajax('problem', 'get')
+    return ajax(URL_API + 'problem', 'get')
   },
   register (data) {
-    return ajax('register', 'post', {
+    return ajax(URL_API + 'register', 'post', {
+      data
+    })
+  },
+  signIn (data) {
+    return ajax(URL_API + 'login', 'post', {
       data
     })
   }
@@ -25,8 +30,6 @@ function ajax (url, method, options) {
   } else {
     params = data = {}
   }
-  console.log(data.data)
-  console.log(options)
   return new Promise((resolve, reject) => {
     axios({
       url,

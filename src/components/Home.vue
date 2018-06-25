@@ -40,7 +40,7 @@ export default {
       api.getAnnouncementList().then(res => {
         console.log(res)
         this.announcements = res.data
-        this.size = res.data.data.size
+        this.size = res.data.size
       })
     },
     tableRowClassName ({row, rowIndex}) {
