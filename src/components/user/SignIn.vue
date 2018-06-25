@@ -70,6 +70,7 @@ export default {
             if (res.data.ok === 1) {
               alert('登陆成功')
               this.$store.commit('setProfile', res.data.data)
+              console.log(res.data)
               this.$router.push('/')
               console.log(this.profile)
             } else {

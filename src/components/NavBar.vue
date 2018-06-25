@@ -16,12 +16,22 @@
       </div>
       <div v-else>
         <!--profile  -->
+        <el-dropdown size="medium" split-button type="primary" style="float: right;margin-top: 8px">
+          {{user.username}}
+          <el-dropdown-menu slot="dropdown">
+            <el-dropdown-item>个人主页</el-dropdown-item>
+            <el-dropdown-item>提交记录</el-dropdown-item>
+            <el-dropdown-item>设置</el-dropdown-item>
+            <div @click="signOut" ><el-dropdown-item divided>登出</el-dropdown-item></div>
+          </el-dropdown-menu>
+        </el-dropdown>
       </div>
     </el-menu>
   </div>
 </template>
 
 <script>
+import {mapGetters} from 'vuex'
 export default {
   name: 'NavBar',
   data () {
@@ -29,13 +39,22 @@ export default {
       activeIndex: '1'
     }
   },
+  mounted () {
+
+  },
   methods: {
     signIn () {
       this.$router.push('/user/signin')
     },
     changeRouter (key) {
       this.$router.push(key)
+    },
+    signOut () {
+      this.$store.commit('setProfile', null)
     }
+  },
+  computed: {
+    ...mapGetters(['isSignIn', 'user'])
   }
 }
 </script>

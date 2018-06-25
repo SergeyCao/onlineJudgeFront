@@ -4,10 +4,10 @@ const state = {
 }
 
 const getters = {
-  user: state => state.profile.user || {},
+  user: state => state.profile || {},
   profile: state => state.profile,
   isSignIn: (state, getters) => {
-    return !!getters.user.ok
+    return !!getters.user.id
   }
 }
 
