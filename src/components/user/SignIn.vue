@@ -9,6 +9,9 @@
           <el-input type="password" v-model="account.password" auto-complete="off"></el-input>
         </el-form-item>
         <el-form-item>
+          <el-checkbox v-model="account.isRemember">七天内自动登录</el-checkbox>
+        </el-form-item>
+        <el-form-item>
           <span style="float: left">
             <router-link :to="{name:'register'}" style="text-decoration: none;color:blue">没有账号？立即注册</router-link>
           </span>
@@ -50,7 +53,7 @@ export default {
       account: {
         username: '',
         password: '',
-        isRemember: true
+        isRemember: false
       },
       rule: {
         username: [
