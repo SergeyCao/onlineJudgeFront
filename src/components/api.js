@@ -2,8 +2,8 @@ import Vue from 'vue'
 import axios from 'axios'
 
 Vue.prototype.$http = axios
-axios.defaults.xsrfHeaderName = 'X-CSRFToken'
-axios.defaults.xsrfCookieName = 'token'
+// axios.defaults.xsrfHeaderName = 'X-CSRFToken'
+// axios.defaults.xsrfCookieName = 'token'
 // 后端往cookie写token 请求默认带token
 var URL_API = '/api/'
 var URL_USER = '/filter_api/'
