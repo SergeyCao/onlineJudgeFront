@@ -1,4 +1,6 @@
 // 用户状态
+import api from '../../components/api'
+
 const state = {
   profile: {}
 }
@@ -12,7 +14,11 @@ const getters = {
 }
 
 const actions = {
-
+  getProfile ({commit}) {
+    api.getProfile().then(res => {
+      commit('setProfile', res.data.data)
+    })
+  }
 }
 
 const mutations = {

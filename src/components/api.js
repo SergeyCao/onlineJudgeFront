@@ -3,10 +3,14 @@ import axios from 'axios'
 
 Vue.prototype.$http = axios
 axios.defaults.xsrfHeaderName = 'X-CSRFToken'
-axios.defaults.xsrfCookieName = 'csrftoken'
+axios.defaults.xsrfCookieName = 'token'
+// 后端往cookie写token 请求默认带token
 var URL_API = '/api/'
-// var URL_USER = '/filter_api/'
+var URL_USER = '/filter_api/'
 export default {
+  getProfile () {
+    return ajax(URL_USER + 'profile', 'get')
+  },
   getAnnouncementList () {
     return ajax(URL_API + 'announcements', 'get')
   },

@@ -5,7 +5,7 @@ import ProblemList from '@/components/problem/ProblemList'
 import SignIn from '@/components/user/SignIn'
 import Register from '@/components/user/Register'
 import User from '@/components/user/User'
-
+import Profile from '@/components/user/Profile'
 Vue.use(Router)
 
 export default new Router({
@@ -34,6 +34,11 @@ export default new Router({
           path: 'register',
           name: 'register',
           component: Register
+        },
+        {
+          path: 'profile',
+          name: 'profile',
+          component: Profile
         }
       ]
     }

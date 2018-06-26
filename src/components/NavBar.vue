@@ -19,7 +19,7 @@
         <el-dropdown size="medium" split-button type="primary" style="float: right;margin-top: 8px">
           {{user.username}}
           <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item>个人主页</el-dropdown-item>
+            <span @click="toProfile"><el-dropdown-item>个人主页</el-dropdown-item></span>
             <el-dropdown-item>提交记录</el-dropdown-item>
             <el-dropdown-item>设置</el-dropdown-item>
             <div @click="signOut" ><el-dropdown-item divided>登出</el-dropdown-item></div>
@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import {mapGetters} from 'vuex'
+import {mapGetters, mapActions} from 'vuex'
 export default {
   name: 'NavBar',
   data () {
@@ -40,9 +40,13 @@ export default {
     }
   },
   mounted () {
-
+    this.getProfile()
   },
   methods: {
+    ...mapActions(['getProfile']),
+    toProfile () {
+      this.$router.push('/user/profile')
+    },
     signIn () {
       this.$router.push('/user/signin')
     },

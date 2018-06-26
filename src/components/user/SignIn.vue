@@ -31,7 +31,6 @@
 <script>
 import api from '../api'
 import {mapGetters} from 'vuex'
-import cookie from '@/util/cookie'
 export default {
   name: 'SignIn',
   data () {
@@ -75,7 +74,6 @@ export default {
               this.$store.commit('setProfile', res.data.data)
               this.$router.push('/')
               console.log(this.profile)
-              cookie.setCookie('token', res.data.token, 7)
               console.log(res.data.token)
             } else {
               alert(res.data.msg)
