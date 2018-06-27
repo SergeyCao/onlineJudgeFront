@@ -2,20 +2,26 @@
     <el-table
       :data="problems"
       style="width: 100%"
-      :row-class-name="tableRowClassName">
+      ref="problems"
+      @current-change= "getProblem">
+      <el-table-column
+        prop="id"
+        label="id"
+        width="90">
+      </el-table-column>
       <el-table-column
         prop="title"
         label="title"
+        width="480">
+      </el-table-column>
+      <el-table-column
+        prop="source"
+        label="source"
         width="180">
       </el-table-column>
       <el-table-column
-        prop="date"
-        label="date"
-        width="180">
-      </el-table-column>
-      <el-table-column
-        prop="writer"
-        label="writer">
+        prop="author"
+        label="author">
       </el-table-column>
     </el-table>
 </template>
@@ -27,28 +33,7 @@ export default {
   name: 'ProblemList',
   data () {
     return {
-      problems: [
-        {
-          'title': '111',
-          'date': '2018-5-21',
-          'writer': 'mas-'
-        },
-        {
-          'title': '111',
-          'date': '2018-5-21',
-          'writer': 'mas-'
-        },
-        {
-          'title': '111',
-          'date': '2018-5-21',
-          'writer': 'mas-'
-        },
-        {
-          'title': '111',
-          'date': '2018-5-21',
-          'writer': 'mas-'
-        }
-      ]
+      problems: []
     }
   },
   mounted () {
@@ -60,7 +45,7 @@ export default {
     },
     getProblemList () {
       api.getProblemList().then(res => {
-        this.problems = res.data.data.results
+        this.problems = res.data.data
         this.size = res.data.data.size
       })
     },
@@ -71,6 +56,10 @@ export default {
         return 'success-row'
       }
       return ''
+    },
+    getProblem (problem) {
+      console.log(problem.problemId)
+      this.$router.push('/problem/' + problem.problemId)
     }
   }
 }

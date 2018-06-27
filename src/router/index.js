@@ -6,6 +6,8 @@ import SignIn from '@/components/user/SignIn'
 import Register from '@/components/user/Register'
 import User from '@/components/user/User'
 import Profile from '@/components/user/Profile'
+import Problem from '@/components/problem/Problem'
+
 Vue.use(Router)
 
 export default new Router({
@@ -20,6 +22,11 @@ export default new Router({
       path: '/problems',
       name: 'problemList',
       component: ProblemList
+    },
+    {
+      path: '/problem/:id',
+      component: Problem,
+      props: true
     },
     {
       path: '/user/',

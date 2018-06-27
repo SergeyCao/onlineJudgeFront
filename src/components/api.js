@@ -8,6 +8,11 @@ Vue.prototype.$http = axios
 var URL_API = '/api/'
 var URL_USER = '/filter_api/'
 export default {
+  getProblem (data) {
+    return ajax(URL_API + 'problem', 'post', {
+      data
+    })
+  },
   getProfile () {
     return ajax(URL_USER + 'profile', 'get')
   },
@@ -15,7 +20,7 @@ export default {
     return ajax(URL_API + 'announcements', 'get')
   },
   getProblemList () {
-    return ajax(URL_API + 'problem', 'get')
+    return ajax(URL_API + 'problem_list', 'post')
   },
   register (data) {
     return ajax(URL_API + 'register', 'post', {
