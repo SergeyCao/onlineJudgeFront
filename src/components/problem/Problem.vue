@@ -41,7 +41,7 @@ export default {
       })
     },
     submit () {
-      api.submit({'code': code}).then(res => {
+      api.submit({'code': this.code}).then(res => {
         console.log(res.data.data)
       })
     }

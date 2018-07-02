@@ -69,7 +69,7 @@ export default {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           api.signIn(this.account).then(res => {
-            if (res.data.ok === 1) {
+            if (res.data.code === 1) {
               alert('登陆成功')
               this.$store.commit('setProfile', res.data.data)
               this.$router.push('/')

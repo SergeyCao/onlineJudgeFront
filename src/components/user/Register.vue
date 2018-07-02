@@ -88,7 +88,7 @@ export default {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           api.register(this.account).then(res => {
-            if (res.data.ok === 1) {
+            if (res.data.code === 1) {
               alert('注册成功')
               this.$router.push('/')
             } else {
