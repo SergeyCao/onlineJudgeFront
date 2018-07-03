@@ -2,22 +2,28 @@
   <div>
     title:
     {{this.problem.title}}<br/>
-    description
-    {{this.problem.description}}<br/>
-    input:
-    {{this.problem.input}}<br/>
-    output:
-    {{this.problem.output}}<br/>
+    <div style="text-align: left">
+      description<br/>
+      {{this.problem.description}}<br/>
+      SampleInput<br/>
+      {{this.problem.description}}<br/>
+      SampleOutput<br/>
+      {{this.problem.description}}<br/>
+      input:<br/>
+      {{this.problem.input}}<br/>
+      output:<br/>
+      {{this.problem.output}}<br/>
+    </div>
     <el-input v-if="isSignIn"
-      type="textarea"
-      :autosize="{ minRows: 10, maxRows: 10}"
-      placeholder="请输入内容"
-      v-model="code">
-    </el-input>
-    <pre style="float: left;text-align: left" >
-      {{this.result.code}}
-    </pre>
-    <el-button @click="submit" type="primary" style="margin-top: 10px">提交<i class="el-icon-upload el-icon--right"></i></el-button>
+        type="textarea"
+        :autosize="{ minRows: 10, maxRows: 10}"
+        placeholder="请输入内容"
+        v-model="code">
+      </el-input>
+      <pre style="float: left;text-align: left" >
+        {{this.result.code}}
+      </pre>
+      <el-button @click="submit" type="primary" style="margin-top: 10px">提交<i class="el-icon-upload el-icon--right"></i></el-button>
   </div>
 </template>
 
@@ -55,7 +61,7 @@ export default {
       }
       api.submit(sub).then(res => {
         console.log(res.data.data)
-        this.result = res.data.data
+        this.$router.push('/status')
       })
     }
   },

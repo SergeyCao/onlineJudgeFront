@@ -8,6 +8,9 @@ Vue.prototype.$http = axios
 var URL_API = '/api/'
 var URL_USER = '/filter_api/'
 export default {
+  getSubmissions () {
+    return ajax(URL_API + 'submissions', 'get')
+  },
   submit (data) {
     return ajax(URL_USER + 'submit', 'post', {
       data

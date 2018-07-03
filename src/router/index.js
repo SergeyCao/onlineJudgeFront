@@ -7,6 +7,7 @@ import Register from '@/components/user/Register'
 import User from '@/components/user/User'
 import Profile from '@/components/user/Profile'
 import Problem from '@/components/problem/Problem'
+import Status from '@/components/status/Status'
 
 Vue.use(Router)
 
@@ -17,6 +18,11 @@ export default new Router({
       path: '/',
       name: 'home',
       component: home
+    },
+    {
+      path: '/status',
+      name: 'status',
+      component: Status
     },
     {
       path: '/problems',
