@@ -1,7 +1,14 @@
 <template>
   <el-table
     :data="submissions"
-    style="width: 100%;">
+    style="width: 100%;"
+    align="left">
+    <el-table-column
+      prop="date"
+      label="date"
+      :formatter="dateFormat"
+      width="180">
+    </el-table-column>
     <el-table-column
       prop="id"
       label="id"
@@ -24,11 +31,20 @@
       prop="time"
       label="time">
     </el-table-column>
+    <el-table-column
+      prop="memory"
+      label="memory">
+    </el-table-column>
+    <el-table-column
+      prop="language"
+      label="language">
+    </el-table-column>
   </el-table>
 </template>
 
 <script>
 import api from '../api'
+import moment from 'moment'
 import {JUDGE_STATUS} from '../../util/constants'
 
 export default {
@@ -36,8 +52,7 @@ export default {
   data () {
     return {
       submissions: [],
-      judge_status : JUDGE_STATUS
-
+      judge_status: JUDGE_STATUS
     }
   },
   mounted () {
@@ -47,22 +62,20 @@ export default {
     init () {
       this.getSubmissions()
     },
-    test ({row, column, rowIndex, columnIndex}) {
-      if (columnIndex === 2) {
-        let style = 'color: ' + JUDGE_STATUS[row.result].color + ';'
-        row.result = JUDGE_STATUS[row.result].name
-        console.log(style)
-        return style
-      }
-      return ''
-    },
     getSubmissions () {
       api.getSubmissions().then(res => {
         this.submissions = res.data.data
+        console.log(this.submissions)
       })
+    },
+    dateFormat: function (row, column) {
+      let date = row[column.property]
+      if (date === undefined) {
+        return ''
+      }
+      return moment(date).format('YYYY-MM-DD HH:mm:ss')
     }
   }
-
 }
 </script>
 
