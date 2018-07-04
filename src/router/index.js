@@ -8,7 +8,7 @@ import User from '@/components/user/User'
 import Profile from '@/components/user/Profile'
 import Problem from '@/components/problem/Problem'
 import Status from '@/components/status/Status'
-
+import Submission from '@/components/status/Submission'
 Vue.use(Router)
 
 export default new Router({
@@ -32,6 +32,11 @@ export default new Router({
     {
       path: '/problem/:id',
       component: Problem,
+      props: true
+    },
+    {
+      path: '/submission/:id',
+      component: Submission,
       props: true
     },
     {

@@ -52,7 +52,7 @@ export default {
       account: {
         username: '',
         password: '',
-        isRemember: false
+        isRemember: true
       },
       rule: {
         username: [

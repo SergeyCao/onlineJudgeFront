@@ -24,7 +24,7 @@
       label="result"
       width="180">
       <template slot-scope="scope">
-        <el-tag size="medium" :color=judge_status[scope.row.result].color>{{ judge_status[scope.row.result].name }}</el-tag>
+        <el-tag size="medium" :color=judge_status[scope.row.result].color style="color: black">{{ judge_status[scope.row.result].name }}</el-tag>
       </template>
     </el-table-column>
     <el-table-column
@@ -38,6 +38,10 @@
     <el-table-column
       prop="language"
       label="language">
+      <template slot-scope="scope">
+        <div v-if="scope.row.userId===user.id" @click="getCode(scope.row.id)"><a href="javascript:void(0)" style=" text-decoration:none;">{{language[scope.row.language]}}</a></div>
+        <div v-else>{{scope.row.language}}</div>
+      </template>
     </el-table-column>
   </el-table>
 </template>
@@ -45,14 +49,16 @@
 <script>
 import api from '../api'
 import moment from 'moment'
-import {JUDGE_STATUS} from '../../util/constants'
+import {JUDGE_STATUS, LANGUAGE} from '../../util/constants'
+import {mapGetters} from 'vuex'
 
 export default {
   name: 'Status',
   data () {
     return {
       submissions: [],
-      judge_status: JUDGE_STATUS
+      judge_status: JUDGE_STATUS,
+      language: LANGUAGE
     }
   },
   mounted () {
@@ -61,6 +67,9 @@ export default {
   methods: {
     init () {
       this.getSubmissions()
+    },
+    getCode (id) {
+      this.$router.push('/submission/' + id)
     },
     getSubmissions () {
       api.getSubmissions().then(res => {
@@ -75,6 +84,9 @@ export default {
       }
       return moment(date).format('YYYY-MM-DD HH:mm:ss')
     }
+  },
+  computed: {
+    ...mapGetters(['user'])
   }
 }
 </script>

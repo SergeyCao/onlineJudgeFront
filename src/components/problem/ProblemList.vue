@@ -3,6 +3,7 @@
       :data="problems"
       style="width: 100%"
       ref="problems"
+      align="left"
       @current-change= "getProblem">
       <el-table-column
         prop="id"

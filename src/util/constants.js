@@ -69,3 +69,8 @@ export const JUDGE_STATUS = {
     type: 'info'
   }
 }
+export const LANGUAGE = {
+  '1': 'C++',
+  '2': 'C',
+  '3': 'JAVA'
+}

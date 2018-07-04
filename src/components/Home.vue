@@ -2,11 +2,12 @@
     <el-table
       :data="announcements"
       style="width: 100%"
-      :row-class-name="tableRowClassName">
+      :row-class-name="tableRowClassName"
+      align="left">
       <el-table-column
         prop="title"
         label="title"
-        width="180">
+        width="800">
       </el-table-column>
       <el-table-column
         prop="date"
