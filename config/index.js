@@ -7,7 +7,7 @@ const path = require('path')
 module.exports = {
   dev: {
 
-    // Paths
+    // Paths http://106.15.183.211:8080
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
