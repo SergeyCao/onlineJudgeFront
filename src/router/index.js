@@ -1,14 +1,15 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import home from '@/components/Home'
-import ProblemList from '@/components/problem/ProblemList'
-import SignIn from '@/components/user/SignIn'
-import Register from '@/components/user/Register'
-import User from '@/components/user/User'
-import Profile from '@/components/user/Profile'
-import Problem from '@/components/problem/Problem'
-import Status from '@/components/status/Status'
-import Submission from '@/components/status/Submission'
+import home from '@/components/oj/Home'
+import ProblemList from '@/components/oj/problem/ProblemList'
+import SignIn from '@/components/oj/user/SignIn'
+import Register from '@/components/oj/user/Register'
+import User from '@/components/oj/user/User'
+import Profile from '@/components/oj/user/Profile'
+import Problem from '@/components/oj/problem/Problem'
+import Status from '@/components/oj/status/Status'
+import Submission from '@/components/oj/status/Submission'
+import Admin from '@/components/admin/admin'
 Vue.use(Router)
 
 export default new Router({
@@ -18,6 +19,11 @@ export default new Router({
       path: '/',
       name: 'home',
       component: home
+    },
+    {
+      path: '/admin',
+      name: 'admin',
+      component: Admin
     },
     {
       path: '/status',

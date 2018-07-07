@@ -49,7 +49,7 @@
 <script>
 import api from '../api'
 import moment from 'moment'
-import {JUDGE_STATUS, LANGUAGE} from '../../util/constants'
+import {JUDGE_STATUS, LANGUAGE} from '../../../util/constants'
 import {mapGetters} from 'vuex'
 
 export default {

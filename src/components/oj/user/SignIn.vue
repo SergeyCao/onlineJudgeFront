@@ -72,7 +72,11 @@ export default {
             if (res.data.code === 1) {
               alert('登陆成功')
               this.$store.commit('setProfile', res.data.data)
-              this.$router.push('/')
+              if (this.profile.isAdmin === 0) {
+                this.$router.push('/')
+              } else {
+                this.$router.push('/admin')
+              }
               console.log(this.profile)
               console.log(res.data.token)
             } else {

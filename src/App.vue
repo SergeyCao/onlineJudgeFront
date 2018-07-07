@@ -1,15 +1,21 @@
 <template>
   <div id="app">
-    <NavBar></NavBar>
+    <NavBar v-if="user.isAdmin === 0"></NavBar>
+    <NavBarAdmin v-else></NavBarAdmin>
     <router-view/>
   </div>
 </template>
 
 <script>
-import NavBar from './components/NavBar'
+import NavBar from './components/oj/NavBar'
+import NavBarAdmin from './components/admin/NavBarAdmin'
+import {mapGetters} from 'vuex'
 export default {
   name: 'App',
-  components: {NavBar}
+  components: {NavBar, NavBarAdmin},
+  computed: {
+    ...mapGetters(['user'])
+  }
 }
 </script>
 

@@ -1,5 +1,5 @@
 // 用户状态
-import api from '../../components/api'
+import api from '../../components/oj/api'
 
 const state = {
   profile: {}
