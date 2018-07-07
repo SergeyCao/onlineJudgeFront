@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <NavBar v-if="user.isAdmin === 0"></NavBar>
+    <NavBar v-if="!user.isAdmin"></NavBar>
     <NavBarAdmin v-else></NavBarAdmin>
     <router-view/>
   </div>
@@ -13,6 +13,9 @@ import {mapGetters} from 'vuex'
 export default {
   name: 'App',
   components: {NavBar, NavBarAdmin},
+  mounted () {
+    console.log(this.user)
+  },
   computed: {
     ...mapGetters(['user'])
   }
