@@ -53,8 +53,27 @@ export default {
     changeRouter (key) {
       this.$router.push(key)
     },
+    getCookie (name) {
+      let reg = new RegExp('(^| )' + name + '=([^;]*)(;|$)')
+      let arr = document.cookie.match(reg)
+      if (arr) {
+        return unescape(arr[2])
+      } else {
+        return null
+      }
+    },
     signOut () {
       this.$store.commit('setProfile', null)
+      console.log(this.getCookie('token'))
+      let myDate = new Date()
+      myDate.setTime(-1000)// 设置时间
+      let data = document.cookie
+      let dataArray = data.split('; ')
+      for (let i = 0; i < dataArray.length; i++) {
+        let varName = dataArray[i].split('=')
+        document.cookie = varName[0] + '=\'\'; expires=' + myDate.toGMTString()
+      }
+      console.log(this.getCookie('token'))
     }
   },
   computed: {

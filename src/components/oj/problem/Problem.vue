@@ -14,7 +14,8 @@
       output:<br/>
       {{this.problem.output}}<br/>
     </div>
-    <el-input v-if="isSignIn"
+    <div v-if="isSignIn">
+    <el-input
         type="textarea"
         :autosize="{ minRows: 10, maxRows: 10}"
         placeholder="请输入内容"
@@ -24,6 +25,7 @@
         {{this.result.code}}
       </pre>
       <el-button @click="submit" type="primary" style="margin-top: 10px">提交<i class="el-icon-upload el-icon--right"></i></el-button>
+    </div>
   </div>
 </template>
 
