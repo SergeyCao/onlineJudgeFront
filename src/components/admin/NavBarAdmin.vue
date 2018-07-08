@@ -69,12 +69,12 @@ export default {
       let myDate = new Date()
       myDate.setTime(-1000)// 设置时间
       let data = document.cookie
+      console.log(data)
       let dataArray = data.split('; ')
       for (let i = 0; i < dataArray.length; i++) {
         let varName = dataArray[i].split('=')
         document.cookie = varName[0] + '=\'\'; expires=' + myDate.toGMTString()
       }
-      console.log(this.getCookie('token'))
     }
   },
   computed: {

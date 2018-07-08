@@ -1,18 +1,18 @@
 <template>
   <div>
-    title:
-    {{this.problem.title}}<br/>
+    <b>
+      {{this.problem.title}}<br/>
+    </b>
     <div style="text-align: left">
-      description<br/>
-      {{this.problem.description}}<br/>
-      SampleInput<br/>
-      {{this.problem.description}}<br/>
-      SampleOutput<br/>
-      {{this.problem.description}}<br/>
-      input:<br/>
+      {{this.problem.description}}<br/><br/>
+      <b>input:<br/></b>
       {{this.problem.input}}<br/>
-      output:<br/>
-      {{this.problem.output}}<br/>
+      <b>output:<br/></b>
+      {{this.problem.output}}<br/><br/>
+      <b>SampleInput<br/></b>
+      {{this.problem.sampleInput}}<br/>
+      <b>SampleOutput<br/></b>
+      {{this.problem.sampleOutput}}<br/>
     </div>
     <div v-if="isSignIn">
     <el-input
@@ -65,6 +65,15 @@ export default {
         console.log(res.data.data)
         this.$router.push('/status')
       })
+    },
+    submitUpload () {
+      this.$refs.upload.submit()
+    },
+    handleRemove (file, fileList) {
+      console.log(file, fileList)
+    },
+    handlePreview (file) {
+      console.log(file)
     }
   },
   computed: {
