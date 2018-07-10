@@ -15,8 +15,8 @@
       width="180">
     </el-table-column>
     <el-table-column
-      prop="userId"
-      label="userId"
+      prop="username"
+      label="username"
       width="180">
     </el-table-column>
     <el-table-column

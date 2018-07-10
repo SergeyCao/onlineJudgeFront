@@ -58,7 +58,7 @@ export default {
         'code': this.code,
         'date': new Date(),
         'problem_id': this.problem.id,
-        'user_id': this.user.id,
+        'username': this.user.username,
         'language': 1
       }
       api.submit(sub).then(res => {
