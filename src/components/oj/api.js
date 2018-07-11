@@ -1,7 +1,5 @@
 import Vue from 'vue'
 import axios from 'axios'
-
-Vue.prototype.$http = axios
 // axios.defaults.xsrfHeaderName = 'X-CSRFToken'
 // axios.defaults.xsrfCookieName = 'token'
 // 后端往cookie写token 请求默认带token
@@ -42,7 +40,34 @@ export default {
     return ajax(URL_API + 'login', 'post', {
       data
     })
+  },
+  ajax_file (url, method, file) {
+    let data = new FormData()
+    data.append('file', file)
+    var config = {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    }
+    return new Promise((resolve, reject) => {
+      axios({
+        url,
+        method,
+        data,
+        config
+      }).then(res => {
+        // API正常返回(status=20x), 是否错误通过有无error判断
+        if (res.data.error !== null) {
+          resolve(res)
+        }
+      }, res => {
+        // API请求异常，一般为Server error 或 network error
+        reject(res)
+        Vue.prototype.$error(res.data)
+      })
+    })
   }
+
 }
 function ajax (url, method, options) {
   if (options !== undefined) {

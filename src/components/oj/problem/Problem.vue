@@ -25,13 +25,20 @@
         {{this.result.code}}
       </pre>
       <el-button @click="submit" type="primary" style="margin-top: 10px">提交<i class="el-icon-upload el-icon--right"></i></el-button>
+      <div v-if="user.isAdmin">
+        <a href="javascript:void(0)" style="display: inline-block;" @click="Uploadstart">
+          <el-button type="primary">上传<i class="el-icon-upload el-icon--right"></i></el-button>
+        </a>
+      </div>
     </div>
+    <input type="file" ref="btn_file" style="display:none" @change="Uploadend">
   </div>
 </template>
 
 <script>
 import api from '../api'
 import {mapGetters} from 'vuex'
+
 export default {
   name: 'problem',
   props: ['id'],
@@ -40,7 +47,8 @@ export default {
       problem: {},
       code: '',
       sub: {},
-      result: {}
+      result: {},
+      fileList: []
     }
   },
   mounted () {
@@ -66,14 +74,17 @@ export default {
         this.$router.push('/status')
       })
     },
-    submitUpload () {
-      this.$refs.upload.submit()
+    Uploadstart () {
+      this.$refs.btn_file.click()
     },
-    handleRemove (file, fileList) {
-      console.log(file, fileList)
-    },
-    handlePreview (file) {
-      console.log(file)
+    Uploadend () {
+      api.ajax_file('/admin/add_input', 'post', this.$refs.btn_file.files[0]).then(res => {
+        if (res.data.code === 1) {
+          this.$refs.bin_file.files = []
+        } else {
+          alert('上传失败')
+        }
+      })
     }
   },
   computed: {
