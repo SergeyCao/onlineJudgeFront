@@ -26,12 +26,38 @@
       </pre>
       <el-button @click="submit" type="primary" style="margin-top: 10px">提交<i class="el-icon-upload el-icon--right"></i></el-button>
       <div v-if="user.isAdmin">
-        <a href="javascript:void(0)" style="display: inline-block;" @click="Uploadstart">
-          <el-button type="primary">上传<i class="el-icon-upload el-icon--right"></i></el-button>
-        </a>
+        添加输入数据:
+        <el-upload
+          class="upload-demo"
+          ref="upload"
+          :multiple=false
+          action="/admin/add_input"
+          :data="content"
+          :headers="header"
+          :on-preview="handlePreview"
+          :on-remove="handleRemove"
+          :file-list="fileList"
+          :auto-upload="false">
+          <el-button slot="trigger" size="small" type="primary">选取文件</el-button>
+          <el-button style="margin-left: 10px;" size="small" type="success" @click="submitUpload">上传到服务器</el-button>
+        </el-upload>
+        添加输出数据:
+        <el-upload
+          class="upload-demo"
+          ref="upload"
+          :multiple=false
+          action="/admin/add_output"
+          :data="content"
+          :headers="header"
+          :on-preview="handlePreview"
+          :on-remove="handleRemove"
+          :file-list="fileList"
+          :auto-upload="false">
+          <el-button slot="trigger" size="small" type="primary">选取文件</el-button>
+          <el-button style="margin-left: 10px;" size="small" type="success" @click="submitUpload">上传到服务器</el-button>
+        </el-upload>
       </div>
     </div>
-    <input type="file" ref="btn_file" style="display:none" @change="Uploadend">
   </div>
 </template>
 
@@ -48,7 +74,9 @@ export default {
       code: '',
       sub: {},
       result: {},
-      fileList: []
+      fileList: [],
+      header: {'token': 'isAdmin'},
+      content: {}
     }
   },
   mounted () {
@@ -58,6 +86,7 @@ export default {
     getProblem (id) {
       api.getProblem({'id': id}).then(res => {
         this.problem = res.data.data
+        this.content = {'id': this.problem.id}
         console.log(this.problem)
       })
     },
@@ -74,17 +103,14 @@ export default {
         this.$router.push('/status')
       })
     },
-    Uploadstart () {
-      this.$refs.btn_file.click()
+    submitUpload () {
+      this.$refs.upload.submit()
     },
-    Uploadend () {
-      api.ajax_file('/admin/add_input', 'post', this.$refs.btn_file.files[0]).then(res => {
-        if (res.data.code === 1) {
-          this.$refs.bin_file.files = []
-        } else {
-          alert('上传失败')
-        }
-      })
+    handleRemove (file, fileList) {
+      console.log(file, fileList)
+    },
+    handlePreview (file) {
+      console.log(file)
     }
   },
   computed: {

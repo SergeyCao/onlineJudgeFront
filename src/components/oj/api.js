@@ -41,9 +41,10 @@ export default {
       data
     })
   },
-  ajax_file (url, method, file) {
+  ajax_file (url, method, file, id) {
     let data = new FormData()
     data.append('file', file)
+    data.append('id', id)
     var config = {
       headers: {
         'Content-Type': 'multipart/form-data'
