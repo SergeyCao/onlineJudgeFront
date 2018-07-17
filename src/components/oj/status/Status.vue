@@ -39,8 +39,8 @@
       prop="language"
       label="language">
       <template slot-scope="scope">
-        <div v-if="scope.row.userId===user.id" @click="getCode(scope.row.id)"><a href="javascript:void(0)" style=" text-decoration:none;">{{language[scope.row.language]}}</a></div>
-        <div v-else>{{scope.row.language}}</div>
+        <div v-if="scope.row.username===user.username" @click="getCode(scope.row.id)"><a href="javascript:void(0)" style=" text-decoration:none;">{{language[scope.row.language]}}</a></div>
+        <div v-else>{{language[scope.row.language]}}</div>
       </template>
     </el-table-column>
   </el-table>
