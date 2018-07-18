@@ -43,6 +43,7 @@ export default new Router({
     },
     {
       path: '/addproblem',
+      name: 'AddProblem',
       component: AddProblem,
       props: true
     },

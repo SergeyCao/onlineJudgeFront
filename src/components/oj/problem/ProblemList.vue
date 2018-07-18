@@ -1,6 +1,6 @@
 <template>
   <div>
-    <router-link :to="{name:'register'}" style="text-decoration: none;color:white">
+    <router-link :to="{name:'AddProblem'}" style="text-decoration: none;color:white">
       <el-button type="primary" icon="el-icon-edit" style="margin-top: 10px;margin-bottom: 10px;float: left" >添加题目</el-button>
     </router-link>
     <el-table

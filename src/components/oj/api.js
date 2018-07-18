@@ -5,7 +5,13 @@ import axios from 'axios'
 // 后端往cookie写token 请求默认带token
 var URL_API = '/api/'
 var URL_USER = '/filter_api/'
+var URL_ADMIN = '/admin/'
 export default {
+  addProblem (data) {
+    return ajax(URL_ADMIN + 'add_problem', 'post', {
+      data
+    })
+  },
   getSubmission (id) {
     return ajax(URL_USER + 'code/' + id, 'get')
   },
