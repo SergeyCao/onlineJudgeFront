@@ -10,6 +10,7 @@ import Problem from '@/components/oj/problem/Problem'
 import Status from '@/components/oj/status/Status'
 import Submission from '@/components/oj/status/Submission'
 import Admin from '@/components/admin/admin'
+import AddProblem from '@/components/admin/AddProblem'
 Vue.use(Router)
 
 export default new Router({
@@ -38,6 +39,11 @@ export default new Router({
     {
       path: '/problem/:id',
       component: Problem,
+      props: true
+    },
+    {
+      path: '/addproblem',
+      component: AddProblem,
       props: true
     },
     {
