@@ -12,15 +12,15 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/api':{
-        target:'http://localhost:8080',
+        target:'http://106.15.183.211:8080',
         changeOrigin:true
       },
       '/filter_api':{
-        target:'http://localhost:8080',
+        target:'http://106.15.183.211:8080',
         changeOrigin:true
       },
       '/admin':{
-        target:'http://localhost:8080',
+        target:'http://106.15.183.211:8080',
         changeOrigin:true
       }
     },

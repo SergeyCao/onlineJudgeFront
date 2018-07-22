@@ -1,8 +1,10 @@
 <template>
   <div>
-    <router-link :to="{name:'AddProblem'}" style="text-decoration: none;color:white">
-      <el-button type="primary" icon="el-icon-edit" style="margin-top: 10px;margin-bottom: 10px;float: left" >添加题目</el-button>
-    </router-link>
+    <div v-if="user.isAdmin">
+      <router-link :to="{name:'AddProblem'}" style="text-decoration: none;color:white">
+        <el-button type="primary" icon="el-icon-edit" style="margin-top: 10px;margin-bottom: 10px;float: left" >添加题目</el-button>
+      </router-link>
+    </div>
     <el-table
       :data="problems"
       style="width: 100%"
@@ -34,6 +36,7 @@
 
 <script>
 import api from '../api'
+import {mapGetters} from 'vuex'
 
 export default {
   name: 'ProblemList',
@@ -67,6 +70,9 @@ export default {
       console.log(problem.problemId)
       this.$router.push('/problem/' + problem.problemId)
     }
+  },
+  computed: {
+    ...mapGetters(['user'])
   }
 }
 </script>

@@ -29,7 +29,7 @@
         添加输入数据:
         <el-upload
           class="upload-demo"
-          ref="upload"
+          ref="upload1"
           :multiple=false
           action="/admin/add_input"
           :data="content"
@@ -39,7 +39,7 @@
           :file-list="fileList"
           :auto-upload="false">
           <el-button slot="trigger" size="small" type="primary">选取文件</el-button>
-          <el-button style="margin-left: 10px;" size="small" type="success" @click="submitUpload">上传到服务器</el-button>
+          <el-button style="margin-left: 10px;" size="small" type="success" @click="submitUpload1">上传到服务器</el-button>
         </el-upload>
         添加输出数据:
         <el-upload
@@ -102,6 +102,9 @@ export default {
         console.log(res.data.data)
         this.$router.push('/status')
       })
+    },
+    submitUpload1 () {
+      this.$refs.upload1.submit()
     },
     submitUpload () {
       this.$refs.upload.submit()
