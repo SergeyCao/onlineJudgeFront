@@ -13,9 +13,7 @@ import {mapGetters} from 'vuex'
 export default {
   name: 'App',
   components: {NavBar, NavBarAdmin},
-  mounted () {
-    console.log(this.user)
-  },
+  mounted () {},
   computed: {
     ...mapGetters(['user'])
   }

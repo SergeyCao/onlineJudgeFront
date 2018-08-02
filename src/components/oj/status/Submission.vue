@@ -1,9 +1,5 @@
 <template>
-  <pre style="float: left;text-align: left" >
-    <div>{{this.code}}</div>
-
-  </pre>
-
+  <div>{{this.id}}</div>
 </template>
 
 <script>
