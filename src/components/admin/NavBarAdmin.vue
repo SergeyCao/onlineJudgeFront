@@ -6,18 +6,36 @@
         <i class="el-icon-tickets"></i>
         Problem
       </el-menu-item>
-      <el-menu-item index="/contests">Contests</el-menu-item>
-      <el-menu-item index="/status">Status</el-menu-item>
-      <el-menu-item index="/rank">Rank</el-menu-item>
-      <el-menu-item index="/blog">Blog</el-menu-item>
-      <el-menu-item index="/about">About</el-menu-item>
-      <el-menu-item index="/admin">Admin</el-menu-item>
+      <el-menu-item index="/contests">
+        <i class="el-icon-edit"></i>
+        Contests
+      </el-menu-item>
+      <el-menu-item index="/status">
+        <i class="el-icon-menu"></i>
+        Status
+      </el-menu-item>
+      <el-menu-item index="/rank">
+        <i class="el-icon-sort"></i>
+        Rank
+      </el-menu-item>
+      <el-menu-item index="/blog">
+        <i class="el-icon-document"></i>
+        Blog
+      </el-menu-item>
+      <el-menu-item index="/about">
+        <i class="el-icon-share"></i>
+        About
+      </el-menu-item>
+      <el-menu-item index="/admin">
+        <i class="el-icon-service"></i>
+        Admin
+      </el-menu-item>
       <div v-if="isSignIn === false">
         <el-button type="primary" style="float: right;margin-top: 8px" @click="signIn">Sign in</el-button>
       </div>
       <div v-else>
         <!--profile  -->
-        <el-dropdown size="medium" split-button type="primary" style="float: right;margin-top: 8px">
+        <el-dropdown size="medium" split-button type="primary" style="float: right;margin: 9px">
           {{user.username}}
           <el-dropdown-menu slot="dropdown">
             <span @click="toProfile"><el-dropdown-item>个人主页</el-dropdown-item></span>
@@ -58,7 +76,7 @@ export default {
       let reg = new RegExp('(^| )' + name + '=([^;]*)(;|$)')
       let arr = document.cookie.match(reg)
       if (arr) {
-        return unescape(arr[2])
+        return arr[2]
       } else {
         return null
       }
@@ -83,24 +101,19 @@ export default {
 }
 </script>
 
-<style scoped>
-  #header {
-    min-width: 1100px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 60px;
-    width: 100%;
-    z-index: 1000;
-    background-color: #fff;
-    box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.1);
-  }
-  .logo {
-    margin-left: 2%;
-    margin-right: 2%;
-    font-size: 20px;
-    float: left;
-    line-height: 60px;
-  }
-
+<style scoped lang="stylus">
+  .logo
+    margin 0 2%
+    font-size: 20px
+    float: left
+    line-height: 60px
+  .el-menu--horizontal>.el-menu-item:hover
+    color cornflowerblue
+    transform rotate(360deg)
+    background-color lightgrey
+    transition all 0.8s ease-in-out
+  .el-button--primary:hover
+    background-color coral
+    border-color coral
+    transition all 0.5s ease-in-out
 </style>

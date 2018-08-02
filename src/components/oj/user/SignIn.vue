@@ -74,23 +74,18 @@ export default {
         if (valid) {
           api.signIn(this.account).then(res => {
             if (res.data.code === 1) {
-              alert('登陆成功')
               this.$store.commit('setProfile', res.data.data)
               if (this.profile.isAdmin === 0) {
                 this.$router.push('/')
               } else {
                 this.$router.push('/admin')
               }
-              console.log(this.profile)
-              console.log(res.data.token)
             } else {
-              alert(res.data.msg)
               this.$refs.account.resetFields()
             }
           })
         } else {
           console.log('error submit!!')
-          alert('error submit')
           return false
         }
       })

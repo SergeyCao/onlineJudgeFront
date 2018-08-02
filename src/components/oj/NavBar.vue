@@ -30,8 +30,7 @@
         <el-button type="primary" style="float: right;margin: 9px" @click="signIn">Sign in</el-button>
       </div>
       <div v-else>
-        <!--profile  -->
-        <el-dropdown size="medium" split-button type="primary" style="float: right;margin-top: 8px">
+        <el-dropdown size="medium" split-button type="primary" style="float: right;margin: 9px">
           {{user.username}}
           <el-dropdown-menu slot="dropdown">
             <span @click="toProfile"><el-dropdown-item>个人主页</el-dropdown-item></span>
