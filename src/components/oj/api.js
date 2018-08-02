@@ -1,11 +1,10 @@
-import Vue from 'vue'
 import axios from 'axios'
 // axios.defaults.xsrfHeaderName = 'X-CSRFToken'
 // axios.defaults.xsrfCookieName = 'token'
 // 后端往cookie写token 请求默认带token
-var URL_API = '/api/'
-var URL_USER = '/filter_api/'
-var URL_ADMIN = '/admin/'
+const URL_API = '/api/'
+const URL_USER = '/filter_api/'
+const URL_ADMIN = '/admin/'
 export default {
   addProblem (data) {
     return ajax(URL_ADMIN + 'add_problem', 'post', {
@@ -51,7 +50,7 @@ export default {
     let data = new FormData()
     data.append('file', file)
     data.append('id', id)
-    var config = {
+    const config = {
       headers: {
         'Content-Type': 'multipart/form-data'
       }
@@ -67,10 +66,8 @@ export default {
         if (res.data.error !== null) {
           resolve(res)
         }
-      }, res => {
-        // API请求异常，一般为Server error 或 network error
-        reject(res)
-        Vue.prototype.$error(res.data)
+      }).catch(e => {
+        console.log(e)
       })
     })
   }
@@ -93,10 +90,8 @@ function ajax (url, method, options) {
       if (res.data.error !== null) {
         resolve(res)
       }
-    }, res => {
-      // API请求异常，一般为Server error 或 network error
-      reject(res)
-      Vue.prototype.$error(res.data)
+    }).catch(e => {
+      console.log(e)
     })
   })
 }
