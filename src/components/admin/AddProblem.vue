@@ -1,18 +1,20 @@
 <template>
-  <div>
-    <div style="margin: 20px 0;"></div>
+  <div class="addProblem">
     <el-input
       type="textarea"
-      :autosize="{ minRows: 1, maxRows: 2}"
+      :autosize="{ minRows: 2, maxRows: 40}"
       placeholder="title"
-      v-model="data.title">
+      v-model="data.title"
+      style="margin-bottom: 10px"
+    >
     </el-input>
-    <div style="margin: 20px 0;"></div>
-    <el-row :gutter="20">
+    <el-row :gutter="20"
+    style="margin-bottom: 10px"
+    >
       <el-col :span="6">
         <el-input
           type="textarea"
-          :autosize="{ minRows: 1, maxRows: 1}"
+          :autosize="{ minRows: 2, maxRows: 1}"
           placeholder="source"
           v-model="data.source">
         </el-input>
@@ -22,7 +24,9 @@
           type="number"
           :autosize="{ minRows: 1, maxRows: 1}"
           placeholder="time limit (ms)"
-          v-model="data.timeLimit">
+          v-model="data.timeLimit"
+          style="padding: 5px"
+        >
         </el-input>
       </el-col>
       <el-col :span="6">
@@ -30,12 +34,12 @@
           type="number"
           :autosize="{ minRows: 1, maxRows: 1}"
           placeholder="memory limit"
-          v-model="data.memLimit">
+          v-model="data.memLimit"
+          style="padding: 5px"
+        >
         </el-input>
       </el-col>
     </el-row>
-
-    <div style="margin: 20px 0;"></div>
     <el-input
       type="textarea"
       :autosize="{ minRows: 2, maxRows: 400}"
@@ -119,6 +123,8 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style scoped lang="stylus">
+  .addProblem
+    width 90%
+    margin 10px auto
 </style>

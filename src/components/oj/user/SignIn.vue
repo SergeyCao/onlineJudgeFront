@@ -9,7 +9,7 @@
           <el-form-item label="密码" prop="password">
             <el-input type="password" v-model="account.password" auto-complete="off"></el-input>
           </el-form-item>
-          <el-form-item>
+          <el-form-item style="margin-bottom: 0">
             <el-checkbox v-model="account.isRemember">七天内自动登录</el-checkbox>
           </el-form-item>
           <el-form-item>

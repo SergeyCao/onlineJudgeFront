@@ -1,13 +1,13 @@
 <template>
   <div>
-    <div v-if="user.isAdmin">
-      <router-link :to="{name:'AddProblem'}" style="text-decoration: none;color:white">
-        <el-button type="primary" icon="el-icon-edit" style="margin-top: 10px;margin-bottom: 10px;float: left" >添加题目</el-button>
+    <div v-if="user.isAdmin === 1">
+      <router-link :to="{name:'AddProblem'}" style="text-decoration: none;">
+        <el-button type="primary" icon="el-icon-edit" style="width: 90%; margin: 5px auto 0 auto" >添加题目</el-button>
       </router-link>
     </div>
     <el-table
       :data="problems"
-      style="width: 100%"
+      style="width: 90%; margin: 10px auto; display: block"
       ref="problems"
       align="left"
       @current-change= "getProblem">
@@ -19,7 +19,7 @@
       <el-table-column
         prop="title"
         label="title"
-        width="480">
+        width="400">
       </el-table-column>
       <el-table-column
         prop="source"
@@ -67,7 +67,6 @@ export default {
       return ''
     },
     getProblem (problem) {
-      console.log(problem.problemId)
       this.$router.push('/problem/' + problem.problemId)
     }
   },
@@ -77,12 +76,12 @@ export default {
 }
 </script>
 
-<style scoped>
-  .el-table .warning-row {
-    background: oldlace;
-  }
-
-  .el-table .success-row {
-    background: #f0f9eb;
-  }
+<style scoped lang="stylus">
+  .el-button:hover
+    background-color coral
+    border-color coral
+  .el-table .warning-row
+    background: oldlace
+  .el-table .success-row
+    background: #f0f9eb
 </style>

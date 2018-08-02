@@ -1,18 +1,18 @@
 <template>
     <el-table
       :data="announcements"
-      style="width: 100%"
+      style="width: 90%; margin: 10px auto; border-radius: 5px"
       :row-class-name="tableRowClassName"
       align="left">
       <el-table-column
         prop="title"
         label="title"
-        width="800">
+        width="700">
       </el-table-column>
       <el-table-column
         prop="date"
         label="date"
-        width="180">
+        width="200">
       </el-table-column>
       <el-table-column
         prop="author"
@@ -39,7 +39,7 @@ export default {
     },
     getAnnouncements () {
       api.getAnnouncementList().then(res => {
-        console.log(res)
+        console.log('announcements:' + res.data)
         if (res.data.code === 1) {
           this.announcements = res.data.data
           this.size = res.data.data.size

@@ -91,7 +91,7 @@ export default {
       })
     },
     submit () {
-      var sub = {
+      let sub = {
         'code': this.code,
         'date': new Date(),
         'problem_id': this.problem.id,
