@@ -113,7 +113,6 @@ export default {
           this.submissions.splice(number * 14, 14)
         }, 500)
       } else {
-        console.log('1')
         this.getSubmissions()
       }
     }
