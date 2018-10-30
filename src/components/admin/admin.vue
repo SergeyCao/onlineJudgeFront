@@ -39,14 +39,13 @@ export default {
     },
     getAnnouncements () {
       api.getAnnouncementList().then(res => {
-        console.log(res)
         if (res.data.code === 1) {
           this.announcements = res.data.data
           this.size = res.data.data.size
         }
       })
     },
-    tableRowClassName ({row, rowIndex}) {
+    tableRowClassName ({rowIndex}) {
       if (rowIndex === 1) {
         return 'warning-row'
       } else if (rowIndex === 3) {
