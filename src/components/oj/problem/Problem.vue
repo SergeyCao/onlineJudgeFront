@@ -87,7 +87,6 @@ export default {
       api.getProblem({'id': id}).then(res => {
         this.problem = res.data.data
         this.content = {'id': this.problem.id}
-        console.log(this.problem)
       })
     },
     submit () {
@@ -99,7 +98,6 @@ export default {
         'language': 1
       }
       api.submit(sub).then(res => {
-        console.log(res.data.data)
         this.$router.push('/status')
       })
     },
@@ -108,12 +106,6 @@ export default {
     },
     submitUpload () {
       this.$refs.upload.submit()
-    },
-    handleRemove (file, fileList) {
-      console.log(file, fileList)
-    },
-    handlePreview (file) {
-      console.log(file)
     }
   },
   computed: {

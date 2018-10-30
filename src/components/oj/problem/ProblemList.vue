@@ -58,7 +58,7 @@ export default {
         this.size = res.data.data.size
       })
     },
-    tableRowClassName ({row, rowIndex}) {
+    tableRowClassName ({rowIndex}) {
       if (rowIndex === 1) {
         return 'warning-row'
       } else if (rowIndex === 3) {

@@ -97,7 +97,6 @@ export default {
             }
           })
         } else {
-          console.log('error submit!!')
           alert('error submit')
           return false
         }
