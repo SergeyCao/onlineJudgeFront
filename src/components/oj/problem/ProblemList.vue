@@ -1,10 +1,5 @@
 <template>
   <div>
-    <div v-if="user.isAdmin === 1">
-      <router-link :to="{name:'AddProblem'}" style="text-decoration: none;">
-        <el-button type="primary" icon="el-icon-edit" style="width: 90%; margin: 5px auto 0 auto" >添加题目</el-button>
-      </router-link>
-    </div>
     <el-table
       :data="problems"
       style="width: 90%; margin: 10px auto; display: block"
@@ -67,7 +62,7 @@ export default {
       return ''
     },
     getProblem (problem) {
-      this.$router.push('/problem/' + problem.problemId)
+      this.$router.push('/problem/' + problem.id)
     }
   },
   computed: {

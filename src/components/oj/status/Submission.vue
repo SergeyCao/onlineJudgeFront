@@ -1,5 +1,8 @@
 <template>
-  <div>{{this.id}}</div>
+  <div>{{this.id}} <br>
+  {{this.code}}
+  </div>
+  
 </template>
 
 <script>

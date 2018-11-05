@@ -1,28 +1,15 @@
 <template>
-  <el-table
-    :data="announcements"
-    style="width: 100%"
-    :row-class-name="tableRowClassName"
-    align="left">
-    <el-table-column
-      prop="title"
-      label="title"
-      width="800">
-    </el-table-column>
-    <el-table-column
-      prop="date"
-      label="date"
-      width="180">
-    </el-table-column>
-    <el-table-column
-      prop="author"
-      label="author">
-    </el-table-column>
-  </el-table>
+    <div v-if="user.isAdmin === 1">
+      <router-link :to="{name:'AddProblem'}" style="text-decoration: none;">
+        <el-button type="primary" icon="el-icon-edit" style="width: 90%; margin: 5px auto 0 auto" >添加题目</el-button>
+      </router-link>
+    </div>
 </template>
 
 <script>
 import api from '../oj/api'
+import {mapGetters} from 'vuex'
+
 export default {
   name: 'admin',
   data () {
@@ -31,38 +18,17 @@ export default {
     }
   },
   mounted () {
-    this.init()
+
   },
   methods: {
-    init () {
-      this.getAnnouncements()
-    },
-    getAnnouncements () {
-      api.getAnnouncementList().then(res => {
-        if (res.data.code === 1) {
-          this.announcements = res.data.data
-          this.size = res.data.data.size
-        }
-      })
-    },
-    tableRowClassName ({rowIndex}) {
-      if (rowIndex === 1) {
-        return 'warning-row'
-      } else if (rowIndex === 3) {
-        return 'success-row'
-      }
-      return ''
-    }
+ 
+  },
+  computed: {
+    ...mapGetters(['user','isSignIn'])
   }
 }
 </script>
 
 <style scoped>
-  .el-table .warning-row {
-    background: oldlace;
-  }
 
-  .el-table .success-row {
-    background: #f0f9eb;
-  }
 </style>

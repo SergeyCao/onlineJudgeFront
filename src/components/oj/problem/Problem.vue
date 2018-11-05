@@ -15,7 +15,7 @@
       {{this.problem.sampleOutput}}<br/>
     </div>
     <div v-if="isSignIn">
-    <el-input
+      <el-input
         type="textarea"
         :autosize="{ minRows: 10, maxRows: 10}"
         placeholder="请输入内容"
@@ -34,8 +34,6 @@
           action="/admin/add_input"
           :data="content"
           :headers="header"
-          :on-preview="handlePreview"
-          :on-remove="handleRemove"
           :file-list="fileList"
           :auto-upload="false">
           <el-button slot="trigger" size="small" type="primary">选取文件</el-button>
@@ -49,8 +47,6 @@
           action="/admin/add_output"
           :data="content"
           :headers="header"
-          :on-preview="handlePreview"
-          :on-remove="handleRemove"
           :file-list="fileList"
           :auto-upload="false">
           <el-button slot="trigger" size="small" type="primary">选取文件</el-button>
@@ -84,7 +80,7 @@ export default {
   },
   methods: {
     getProblem (id) {
-      api.getProblem({'id': id}).then(res => {
+      api.getProblem({"id":id}).then(res => {
         this.problem = res.data.data
         this.content = {'id': this.problem.id}
       })

@@ -54,7 +54,9 @@ export default {
     }
   },
   mounted () {
-    this.getProfile()
+    if(!this.isSignIn) {
+      this.getProfile()
+    }
   },
   methods: {
     ...mapActions(['getProfile']),

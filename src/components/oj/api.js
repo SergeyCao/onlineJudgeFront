@@ -22,16 +22,16 @@ export default {
       data
     })
   },
-  getProblem (data) {
-    return ajax(URL_API + 'problem', 'post', {
-      data
+  getProblem (params) {
+    return ajax(URL_API + 'problem', 'get',{
+      params
     })
   },
   getProfile () {
     return ajax(URL_USER + 'profile', 'get')
   },
   getAnnouncementList () {
-    return ajax(URL_API + 'announcements', 'get')
+    return ajax(URL_API + 'announcements', 'post')
   },
   getProblemList () {
     return ajax(URL_API + 'problem_list', 'post')
@@ -79,6 +79,8 @@ function ajax (url, method, options) {
   } else {
     params = data = {}
   }
+  console.log(options)
+  console.log(params)
   return new Promise((resolve, reject) => {
     axios({
       url,
