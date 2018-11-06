@@ -2,8 +2,11 @@
     <el-table
       :data="announcements"
       style="width: 90%; margin: 10px auto; border-radius: 5px"
+      type="selection"
       :row-class-name="tableRowClassName"
-      align="left">
+      @row-click="click"
+      align="left"
+      >
       <el-table-column
         prop="title"
         label="title"
@@ -34,6 +37,11 @@ export default {
     this.init()
   },
   methods: {
+    click (row, event, column) {
+      this.$alert(row.content, row.title, {
+          confirmButtonText: '确定'
+        });
+    },
     init () {
       this.getAnnouncements()
     },
