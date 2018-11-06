@@ -11,6 +11,7 @@ import Status from '@/components/oj/status/Status'
 import Submission from '@/components/oj/status/Submission'
 import Admin from '@/components/admin/admin'
 import AddProblem from '@/components/admin/AddProblem'
+import addAnnouncement from '@/components/admin/AddAnnouncement'
 Vue.use(Router)
 
 export default new Router({
@@ -45,6 +46,12 @@ export default new Router({
       path: '/addproblem',
       name: 'AddProblem',
       component: AddProblem,
+      props: true
+    },
+    {
+      path: '/addannouncement',
+      name: 'AddAnnouncement',
+      component: addAnnouncement,
       props: true
     },
     {

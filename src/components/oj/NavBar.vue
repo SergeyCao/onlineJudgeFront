@@ -106,7 +106,7 @@ export default {
     line-height: 60px
   .el-menu--horizontal>.el-menu-item:hover
     color cornflowerblue
-    transform rotate(360deg)
+     transform rotate(-10deg)
     background-color lightgrey
     transition all 0.8s ease-in-out
   .el-button--primary:hover

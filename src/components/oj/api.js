@@ -6,6 +6,11 @@ const URL_API = '/api/'
 const URL_USER = '/filter_api/'
 const URL_ADMIN = '/admin/'
 export default {
+  addAnnouncement (data) {
+    return ajax(URL_ADMIN + 'add_announcement', 'post', {
+      data
+    })
+  },
   addProblem (data) {
     return ajax(URL_ADMIN + 'add_problem', 'post', {
       data
