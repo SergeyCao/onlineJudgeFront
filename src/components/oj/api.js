@@ -19,8 +19,10 @@ export default {
   getSubmission (id) {
     return ajax(URL_USER + 'code/' + id, 'get')
   },
-  getSubmissions () {
-    return ajax(URL_API + 'submissions', 'get')
+  getSubmissions (data) {
+    return ajax(URL_API + 'submissions', 'post', {
+        data
+    })
   },
   submit (data) {
     return ajax(URL_USER + 'submit', 'post', {

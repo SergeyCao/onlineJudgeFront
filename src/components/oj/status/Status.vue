@@ -2,7 +2,7 @@
   <div>
     <el-table
       :data="submissions"
-      style="width: 90%; height: 790px;margin: 10px auto;"
+      style="width: 90%; margin: 10px auto;"
       align="left">
       <el-table-column
         prop="date"
@@ -51,7 +51,7 @@
       <el-pagination
         @current-change="handleCurrentChange"
         layout="prev, pager, next"
-        :page-size="14"
+        :page-size=20
         :total="totalSize">
       </el-pagination>
     </div>
@@ -86,9 +86,9 @@ export default {
     getCode (id) {
       this.$router.push('/submission/' + id)
     },
-    getSubmissions () {
-      api.getSubmissions().then(res => {
-        this.totalSize = Number(res.data.data.length)
+    getSubmissions (val) {
+      api.getSubmissions({pageNum:val}).then(res => {
+        this.totalSize = res.data.total
         this.preSubmissions = res.data.data
         this.submissions = this.preSubmissions
       })
@@ -101,20 +101,7 @@ export default {
       return moment(date).format('YYYY-MM-DD HH:mm:ss')
     },
     handleCurrentChange (val) {
-      let number = 0
-      if (val - 2 < 0) {
-        number = 0
-      } else {
-        number = val - 2
-      }
-      this.submissions = this.preSubmissions
-      if (val !== 1) {
-        setTimeout(() => {
-          this.submissions.splice(number * 14, 14)
-        }, 500)
-      } else {
-        this.getSubmissions()
-      }
+      this.getSubmissions(val)
     }
   },
   computed: {
