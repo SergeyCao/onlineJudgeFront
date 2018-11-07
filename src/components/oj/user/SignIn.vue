@@ -75,7 +75,7 @@ export default {
           api.signIn(this.account).then(res => {
             if (res.data.code === 1) {
               this.$store.commit('setProfile', res.data.data)
-              if (this.profile.isAdmin === 0) {
+              if (this.profile === null || this.profile.isAdmin === 0) {
                 this.$router.push('/')
               } else {
                 this.$router.push('/admin')
